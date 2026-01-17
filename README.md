@@ -55,13 +55,13 @@ Opens Storybook at `http://localhost:6006` for component development and testing
 chat-navigator-for-chatgpt/
 ├── src/
 │   ├── background/      # Service worker scripts
-│   ├── components/      # React components
-│   ├── content/         # Content scripts injected into ChatGPT
-│   ├── hooks/           # Custom React hooks
-│   ├── sidepanel/       # Side panel UI entry point
-│   ├── stories/         # Storybook stories
-│   ├── tests/            # Test files
-│   └── types/           # TypeScript type definitions
+│   ├── content/         # Content scripts and logic injected into ChatGPT
+│   ├── shared/          # Shared types and utilities
+│   ├── sidepanel/       # Side panel UI and logic
+│   │   ├── components/  # React components
+│   │   ├── hooks/       # Custom React hooks
+│   │   └── stories/     # Storybook stories
+│   └── tests/           # Test files
 ├── assets/              # Extension icons and images
 ├── manifest.json        # Chrome extension manifest
 └── vite.config.ts       # Vite configuration
