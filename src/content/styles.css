@@ -1,0 +1,144 @@
+/* CSS Variables for content script - injected into host page */
+
+:root {
+  /* User highlight (Blue) */
+  --cn-user-highlight-bg: rgba(59, 130, 246, 0.15);
+  --cn-user-highlight-ring: rgba(59, 130, 246, 0.5);
+
+  /* Assistant highlight (Green - ChatGPT accent) */
+  --cn-assistant-highlight-bg: rgba(16, 163, 127, 0.15);
+  --cn-assistant-highlight-ring: rgba(16, 163, 127, 0.5);
+
+  /* Accent (ChatGPT green) */
+  --cn-accent-ring: rgba(16, 163, 127, 0.5);
+
+  /* Text */
+  --cn-text-secondary: #b4b4b4;
+  --cn-text-primary: #ffffff;
+
+  /* Button states */
+  --cn-btn-bg: rgba(255, 255, 255, 0.05);
+  --cn-btn-bg-hover: rgba(255, 255, 255, 0.12);
+  --cn-btn-bg-active: rgba(255, 255, 255, 0.18);
+
+  /* Sizes */
+  --cn-btn-size: 40px;
+  --cn-border-radius: 10px;
+  --cn-border-radius-sm: 8px;
+
+  /* Position */
+  --cn-btn-top: 80px;
+  --cn-btn-right: 32px;
+}
+
+/* User message highlight (Blue) */
+.chatnav-highlight-user {
+  animation: chatnav-pulse-user 0.5s ease-out;
+  position: relative;
+}
+
+.chatnav-highlight-user::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: var(--cn-border-radius-sm);
+  pointer-events: none;
+  animation: chatnav-border-pulse-user 0.5s ease-out;
+}
+
+@keyframes chatnav-pulse-user {
+  0% {
+    background-color: var(--cn-user-highlight-bg);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+@keyframes chatnav-border-pulse-user {
+  0% {
+    box-shadow: 0 0 0 0 var(--cn-user-highlight-ring);
+  }
+  100% {
+    box-shadow: 0 0 0 8px rgba(59, 130, 246, 0);
+  }
+}
+
+/* Assistant message highlight (Green) */
+.chatnav-highlight-assistant {
+  animation: chatnav-pulse-assistant 0.5s ease-out;
+  position: relative;
+}
+
+.chatnav-highlight-assistant::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: var(--cn-border-radius-sm);
+  pointer-events: none;
+  animation: chatnav-border-pulse-assistant 0.5s ease-out;
+}
+
+@keyframes chatnav-pulse-assistant {
+  0% {
+    background-color: var(--cn-assistant-highlight-bg);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+@keyframes chatnav-border-pulse-assistant {
+  0% {
+    box-shadow: 0 0 0 0 var(--cn-assistant-highlight-ring);
+  }
+  100% {
+    box-shadow: 0 0 0 8px rgba(16, 163, 127, 0);
+  }
+}
+
+/* Button container - fixed position stays visible when scrolling */
+.chatnav-container {
+  position: fixed;
+  top: var(--cn-btn-top);
+  right: var(--cn-btn-right);
+  z-index: 9999;
+}
+
+/* Button - matches ChatGPT's icon button style */
+.chatnav-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--cn-btn-size);
+  height: var(--cn-btn-size);
+  padding: 0;
+  border: none;
+  border-radius: var(--cn-border-radius);
+  background-color: var(--cn-btn-bg);
+  color: var(--cn-text-secondary);
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease,
+    transform 0.1s ease;
+}
+
+.chatnav-btn:hover {
+  background-color: var(--cn-btn-bg-hover);
+  color: var(--cn-text-primary);
+}
+
+.chatnav-btn:active {
+  background-color: var(--cn-btn-bg-active);
+  transform: scale(0.95);
+}
+
+.chatnav-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--cn-accent-ring);
+}
+
+.chatnav-btn svg {
+  flex-shrink: 0;
+}

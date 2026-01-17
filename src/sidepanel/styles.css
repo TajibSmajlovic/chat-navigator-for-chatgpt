@@ -1,0 +1,79 @@
+@import 'tailwindcss';
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --cn-bg-primary: #212121;
+  --cn-bg-secondary: #171717;
+  --cn-bg-tertiary: #2f2f2f;
+  --cn-bg-hover: #3a3a3a;
+  --cn-text-primary: #ececec;
+  --cn-text-secondary: #b4b4b4;
+  --cn-text-muted: #6b6b6b;
+  --cn-text-dimmed: #525252;
+
+  --cn-accent: #10a37f;
+  --cn-accent-hover: #0d8a6a;
+  --cn-accent-light: rgba(16, 163, 127, 0.1);
+  --cn-accent-medium: rgba(16, 163, 127, 0.2);
+  --cn-accent-ring: rgba(16, 163, 127, 0.5);
+
+  --cn-highlight: #3b82f6;
+  --cn-highlight-bg: rgba(59, 130, 246, 0.15);
+  --cn-highlight-ring: rgba(59, 130, 246, 0.5);
+
+  --cn-user: #2d5a9e;
+  --cn-user-light: rgba(45, 90, 158, 0.25);
+  --cn-user-medium: rgba(45, 90, 158, 0.4);
+  --cn-user-ring: rgba(45, 90, 158, 0.6);
+
+  --cn-border: #424242;
+  --cn-border-subtle: rgba(255, 255, 255, 0.05);
+  --cn-border-light: rgba(255, 255, 255, 0.0784);
+
+  --cn-btn-bg: rgba(255, 255, 255, 0.05);
+  --cn-btn-bg-hover: rgba(255, 255, 255, 0.12);
+  --cn-btn-bg-active: rgba(255, 255, 255, 0.18);
+
+  --cn-btn-size: 40px;
+  --cn-border-radius: 10px;
+  --cn-border-radius-sm: 8px;
+}
+
+html {
+  font-family:
+    'Inter',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    sans-serif;
+
+  /* Smoother rendering on Macs/Webkit browsers */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Prioritize legibility over speed */
+  text-rendering: optimizeLegibility;
+
+  /* Prevent fake bold/italic styles */
+  font-synthesis: none;
+}
+
+/* Custom scrollbar */
+.minichat::-webkit-scrollbar {
+  width: 4px;
+}
+
+.minichat::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.minichat::-webkit-scrollbar-thumb {
+  background: var(--chatgpt-border);
+  border-radius: 9999px;
+}
+
+.minichat::-webkit-scrollbar-thumb:hover {
+  background: var(--chatgpt-text-muted);
+}
