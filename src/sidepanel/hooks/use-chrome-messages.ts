@@ -57,10 +57,10 @@ export function useChromeMessages() {
     const handleMessage = (message: ContentToPanel) => {
       switch (message.type) {
         case 'NODES_UPDATED':
-          if (message.nodes.length === 0) return;
-
           setNodes(message.nodes);
-          setActiveNodeId(message.nodes[message.nodes.length - 1].id);
+          setActiveNodeId(
+            message.nodes.length > 0 ? message.nodes[message.nodes.length - 1].id : null
+          );
           setChatTitle(message.chatTitle);
           updateConnectionState('connected');
           break;

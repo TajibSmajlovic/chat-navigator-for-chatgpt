@@ -53,6 +53,7 @@ export function createMessageObserver(
 ): MutationObserver {
   let debounceTimer: ReturnType<typeof setTimeout> | null = null;
   let lastNodeCount = 0;
+  let lastNodesSignature = '';
 
   return new MutationObserver((mutations) => {
     const hasRelevant = mutations.some((m) => m.addedNodes.length > 0 || m.removedNodes.length > 0);
@@ -61,8 +62,11 @@ export function createMessageObserver(
     if (debounceTimer) clearTimeout(debounceTimer);
     debounceTimer = setTimeout(() => {
       const newNodes = MessagesHandler.detectMessages();
-      if (newNodes.length !== lastNodeCount) {
+      const nextSignature = newNodes.map((node) => `${node.id}:${node.textPreview}`).join('|');
+
+      if (newNodes.length !== lastNodeCount || nextSignature !== lastNodesSignature) {
         lastNodeCount = newNodes.length;
+        lastNodesSignature = nextSignature;
         onNodesChange(newNodes);
       }
     }, DEBOUNCE_DELAY);
