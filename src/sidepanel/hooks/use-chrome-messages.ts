@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 
 import type { ContentToPanel, ConversationNode, PanelToContent } from '#/shared/types';
+import { isChatGptUrl } from '#/shared/utils';
 
 import { useConnectionState } from './use-connection-state';
 
@@ -18,8 +19,7 @@ export function useChromeMessages() {
         return null;
       }
 
-      // Check if we're on ChatGPT
-      if (!tab.url?.startsWith('https://chatgpt.com')) {
+      if (!isChatGptUrl(tab.url)) {
         return null;
       }
 
