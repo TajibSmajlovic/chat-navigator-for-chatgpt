@@ -49,13 +49,13 @@ jobs:
         run: pnpm zip
 
       - name: Upload to Chrome Web Store
-        uses: nicolo-ribaudo/chrome-webstore-action@v0.1.1
+        uses: mnao305/chrome-extension-upload@v5.0.0
         with:
+          file-path: extension.zip
           extension-id: ${{ secrets.CHROME_EXTENSION_ID }}
           client-id: ${{ secrets.CHROME_CLIENT_ID }}
           client-secret: ${{ secrets.CHROME_CLIENT_SECRET }}
           refresh-token: ${{ secrets.CHROME_REFRESH_TOKEN }}
-          zip-path: extension.zip
           publish: true
 
       - name: Read new version

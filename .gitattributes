@@ -1,0 +1,2 @@
+# Exclude from GitHub Languages statistics (Linguist)
+src/tests/mocks/example_conversation.html linguist-generated=true
