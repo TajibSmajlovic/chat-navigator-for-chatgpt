@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 
-import type { PanelToContent } from '#shared/types';
+import type { PanelToContent } from '#/shared/types';
+import { isChatGptUrl } from '#/shared/utils';
 
 type ConnectionState = 'loading' | 'connected' | 'not-chatgpt';
 
@@ -28,7 +29,7 @@ export function useConnectionState({ sendToContent, onConnected }: UseConnection
       try {
         const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
 
-        if (!tab?.id || !tab.url?.startsWith('https://chatgpt.com')) {
+        if (!tab?.id || !isChatGptUrl(tab.url)) {
           setConnectionState('not-chatgpt');
           return;
         }

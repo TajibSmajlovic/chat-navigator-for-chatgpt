@@ -54,4 +54,18 @@ export function injectMiniChatButton(): void {
   const button = createButton();
   container.appendChild(button);
   document.body.appendChild(container);
+
+  // Check if panel is already open and hide button if so
+  if (isExtensionContextValid()) {
+    chrome.runtime
+      .sendMessage({ type: 'CHECK_PANEL_STATE' })
+      .then((response) => {
+        if (response?.isOpen) {
+          container.style.display = 'none';
+        }
+      })
+      .catch(() => {
+        // Ignore errors - panel may not be responding
+      });
+  }
 }

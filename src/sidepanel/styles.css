@@ -70,10 +70,16 @@ html {
 }
 
 .minichat::-webkit-scrollbar-thumb {
-  background: var(--chatgpt-border);
+  background: var(--cn-border);
   border-radius: 9999px;
 }
 
 .minichat::-webkit-scrollbar-thumb:hover {
-  background: var(--chatgpt-text-muted);
+  background: var(--cn-text-muted);
+}
+
+.message-node {
+  padding: 3px 6px;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 60px;
 }

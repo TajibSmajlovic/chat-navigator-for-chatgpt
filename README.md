@@ -13,7 +13,7 @@ A Chrome extension that provides a MiniChat for ChatGPT conversations, making it
 
 ```bash
 # Clone the repository
-git clone <repository-url>
+git clone https://github.com/TajibSmajlovic/chat-navigator-for-chatgpt
 cd chat-navigator-for-chatgpt
 
 # Install dependencies

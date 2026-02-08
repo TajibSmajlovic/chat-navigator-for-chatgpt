@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import type { ConversationNode } from '#shared/types';
+import type { ConversationNode } from '#/shared/types';
 
 import MessagesHandler from '../../content/messages-handler';
 

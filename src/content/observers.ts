@@ -1,4 +1,4 @@
-import type { ConversationNode } from '#shared/types';
+import type { ConversationNode } from '#/shared/types';
 
 import {
   DEBOUNCE_DELAY,
@@ -47,24 +47,40 @@ export function observeMessages(observer: IntersectionObserver): void {
   document.querySelectorAll(MESSAGE_SELECTOR).forEach((el) => observer.observe(el));
 }
 
-// Create a MutationObserver to detect when new messages are added/removed
+// Create a MutationObserver to detect when new messages are added/removed.
 export function createMessageObserver(
   onNodesChange: (nodes: ConversationNode[]) => void
 ): MutationObserver {
   let debounceTimer: ReturnType<typeof setTimeout> | null = null;
   let lastNodeCount = 0;
+  let lastNodesSignature = '';
 
-  return new MutationObserver((mutations) => {
+  const observer = new MutationObserver((mutations) => {
     const hasRelevant = mutations.some((m) => m.addedNodes.length > 0 || m.removedNodes.length > 0);
     if (!hasRelevant) return;
 
     if (debounceTimer) clearTimeout(debounceTimer);
     debounceTimer = setTimeout(() => {
+      debounceTimer = null;
       const newNodes = MessagesHandler.detectMessages();
-      if (newNodes.length !== lastNodeCount) {
+      const nextSignature = newNodes.map((node) => `${node.id}:${node.textPreview}`).join('|');
+
+      if (newNodes.length !== lastNodeCount || nextSignature !== lastNodesSignature) {
         lastNodeCount = newNodes.length;
+        lastNodesSignature = nextSignature;
         onNodesChange(newNodes);
       }
     }, DEBOUNCE_DELAY);
   });
+
+  const originalDisconnect = observer.disconnect.bind(observer);
+  observer.disconnect = () => {
+    if (debounceTimer) {
+      clearTimeout(debounceTimer);
+      debounceTimer = null;
+    }
+    originalDisconnect();
+  };
+
+  return observer;
 }
