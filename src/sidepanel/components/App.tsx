@@ -18,6 +18,7 @@ export const App = () => {
       case 'connected':
         return (
           <MiniChat
+            key={chatTitle}
             nodes={nodes}
             activeNodeId={activeNodeId}
             clickedNodeId={clickedNodeId}

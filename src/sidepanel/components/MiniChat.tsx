@@ -63,7 +63,7 @@ export const MiniChat: FC<MiniChatProps> = ({
   return (
     <div ref={containerRef} className="flex flex-col gap-2">
       {nodes.map((node) => (
-        <div key={node.id} data-turn-id={node.id}>
+        <div key={node.id} data-turn-id={node.id} className="message-node">
           <MessageNode
             node={node}
             isActive={

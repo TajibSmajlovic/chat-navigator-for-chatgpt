@@ -77,3 +77,9 @@ html {
 .minichat::-webkit-scrollbar-thumb:hover {
   background: var(--chatgpt-text-muted);
 }
+
+.message-node {
+  padding: 3px 6px;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 60px;
+}
