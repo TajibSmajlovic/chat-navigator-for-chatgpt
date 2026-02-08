@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "vite build --watch",
     "build": "tsc -b && vite build",
+    "zip": "cd dist && zip -r ../extension.zip .",
+    "bump-version": "node scripts/bump-version.js",
     "preview": "vite preview",
     "lint": "eslint ./src/**/*.{ts,tsx}",
     "lint:fix": "eslint ./src/**/*.{ts,tsx} --fix",
