@@ -38,9 +38,13 @@ chrome.runtime.onConnect.addListener((port) => {
   });
 });
 
-chrome.runtime.onMessage.addListener((message, sender) => {
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.type === 'OPEN_SIDE_PANEL' && sender.tab?.id) {
     chrome.sidePanel.open({ tabId: sender.tab.id });
     notifyContentScript(sender.tab.id, true);
+  } else if (message.type === 'CHECK_PANEL_STATE' && sender.tab?.id) {
+    const isOpen = panelPorts.has(sender.tab.id);
+    sendResponse({ isOpen });
+    return true;
   }
 });

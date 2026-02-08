@@ -7,7 +7,7 @@ export const SCROLL_OBSERVER_MIN_VISIBILITY = 0.1; // Minimum 10% visibility to 
 
 export const HIGHLIGHT_DURATION = 1250;
 export const DEBOUNCE_DELAY = 150; // Increased to wait for message content to load
-export const MIN_CONTENT_LENGTH = 3; // Minimum chars for valid message content
+export const MIN_CONTENT_LENGTH = 1; // Minimum chars for valid message content
 export const TEXT_PREVIEW_MAX_LENGTH = 140; // Allow up to 140 chars for 2-3 lines of preview
 
 export const BUTTON_ID = 'chatnav-btn';
