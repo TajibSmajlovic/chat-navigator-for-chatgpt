@@ -2,7 +2,9 @@
 
 A Chrome extension that provides a MiniChat for ChatGPT conversations, making it easier to navigate long chat threads.
 
-## Prerequisites
+Add to chrome from this [link](https://chromewebstore.google.com/detail/chat-navigator-for-chatgp/hnfkbolcmboaeknfjadppmgbhobhmino?authuser=0&hl=en-GB).
+
+## Prerequisites for running locally
 
 - [Node.js](https://nodejs.org/) (v18 or higher)
 - [pnpm](https://pnpm.io/) (v8 or higher)
