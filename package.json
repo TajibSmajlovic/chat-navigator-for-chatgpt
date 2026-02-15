@@ -1,6 +1,6 @@
 {
   "name": "chat-navigator-for-chatgpt",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "type": "module",
   "description": "Navigate your ChatGPT conversations with ease",
   "scripts": {
