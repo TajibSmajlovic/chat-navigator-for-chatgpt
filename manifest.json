@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Chat Navigator for ChatGPT",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A messenger-style navigation for ChatGPT conversations",
   "icons": {
     "16": "assets/logo-16_16.png",
