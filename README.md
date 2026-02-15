@@ -51,6 +51,27 @@ pnpm storybook
 
 Opens Storybook at `http://localhost:6006` for component development and testing.
 
+### Testing
+
+```bash
+pnpm test          # Run tests once
+pnpm test:watch    # Run tests in watch mode
+```
+
+### Linting
+
+```bash
+pnpm lint          # Check for lint issues
+pnpm lint:fix      # Fix lint issues automatically
+```
+
+### Build & release
+
+```bash
+pnpm build         # Production build (output in dist/)
+pnpm zip           # Create extension.zip for store upload or distribution
+```
+
 ## Project Structure
 
 ```
@@ -65,6 +86,7 @@ chat-navigator-for-chatgpt/
 │   │   └── stories/     # Storybook stories
 │   └── tests/           # Test files
 ├── assets/              # Extension icons and images
+├── scripts/             # Build and version scripts
 ├── manifest.json        # Chrome extension manifest
 └── vite.config.ts       # Vite configuration
 ```
